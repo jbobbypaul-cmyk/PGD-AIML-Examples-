@@ -1,0 +1,52 @@
+# render.yaml — RuralCare AI Infrastructure as Code
+# Deploy: connect this repo on render.com → it auto-reads this file.
+# ANTHROPIC_API_KEY must be set manually in the Render dashboard (Settings → Environment)
+# as a Secret — it is intentionally NOT stored here.
+
+services:
+  - type: web
+    name: ruralcare-ai
+    runtime: docker
+    dockerfilePath: ./docker/Dockerfile
+    dockerContext: .
+    # Render injects $PORT — app must listen on it (not hardcoded 8501)
+    startCommand: >
+      streamlit run app/streamlit_app.py
+      --server.port=$PORT
+      --server.address=0.0.0.0
+      --server.headless=true
+    # Streamlit's built-in health endpoint
+    healthCheckPath: /_stcore/health
+    # Persistent disk — survives redeploys; ChromaDB + SQLite stored here
+    disk:
+      name: ruralcare-data
+      mountPath: /app/data
+      sizeGB: 2
+    envVars:
+      # LLM — Ollama is not available on Render; use Claude
+      - key: LLM_PROVIDER
+        value: claude
+      # Embeddings — sentence-transformers (no Ollama on Render)
+      - key: EMBED_PROVIDER
+        value: huggingface
+      # Data paths — point to the persistent disk mount
+      - key: CHROMA_DB_PATH
+        value: /app/data/chroma
+      - key: SQLITE_PATH
+        value: /app/data/ruralcare.db
+      # App settings
+      - key: DEMO_MODE
+        value: "true"
+      - key: LOG_LEVEL
+        value: INFO
+      - key: MAX_INPUT_LENGTH
+        value: "2000"
+      - key: RAG_TOP_K
+        value: "5"
+      - key: RAG_SCORE_THRESHOLD
+        value: "0.3"
+      # ANTHROPIC_API_KEY — set this in Render dashboard as a Secret, NOT here.
+      # Dashboard: Settings → Environment → Add Secret Variable → ANTHROPIC_API_KEY
+      # sync: false tells Render to expect it from the dashboard, not this file.
+      - key: ANTHROPIC_API_KEY
+        sync: false

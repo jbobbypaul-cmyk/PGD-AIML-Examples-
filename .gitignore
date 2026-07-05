@@ -1,0 +1,62 @@
+# Secrets — never commit any of these
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.yml
+secrets.json
+*_secret*
+*_credentials*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Runtime data — never commit real patient data
+data/ruralcare.db
+data/*.db
+data/chroma/
+data/audit_logs/*.jsonl
+data/sample_audio/
+
+# Jupyter
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Microsoft Office temp/lock files
+~$*
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/

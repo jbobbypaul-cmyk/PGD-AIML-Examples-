@@ -1,0 +1,90 @@
+[
+  {
+    "case_id": "DEMO-001",
+    "label": "Mild — Headache",
+    "input": "I have a mild headache and feel a bit tired since this morning.",
+    "language": "en",
+    "location_district": "Dharmapuri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "MILD",
+    "expected_emergency": false,
+    "notes": "Low severity, short duration, no red flags."
+  },
+  {
+    "case_id": "DEMO-002",
+    "label": "Moderate — Fever 3 days",
+    "input": "I have had fever for 3 days, headache, and body aches. I feel very weak and tired.",
+    "language": "en",
+    "location_district": "Dharmapuri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "MODERATE",
+    "expected_emergency": false,
+    "notes": "Prolonged fever with associated symptoms — needs PHC evaluation."
+  },
+  {
+    "case_id": "DEMO-003",
+    "label": "Urgent — Chest pain + prolonged cough",
+    "input": "I have chest pain and have been coughing for 2 weeks. I am also losing weight.",
+    "language": "en",
+    "location_district": "Krishnagiri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "URGENT",
+    "expected_emergency": false,
+    "notes": "Chronic chest symptoms with weight loss — TB risk profile, needs urgent evaluation."
+  },
+  {
+    "case_id": "DEMO-004",
+    "label": "Emergency — Unconscious + cannot breathe",
+    "input": "My father is unconscious and cannot breathe.",
+    "language": "en",
+    "location_district": "Vellore",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "EMERGENCY",
+    "expected_emergency": true,
+    "notes": "Classic emergency scenario — airway and consciousness compromised."
+  },
+  {
+    "case_id": "DEMO-005",
+    "label": "Hindi — Fever with headache",
+    "input": "मुझे तीन दिनों से बुखार है और सिर दर्द हो रहा है",
+    "language": "hi",
+    "location_district": "Dharmapuri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "MODERATE",
+    "expected_emergency": false,
+    "notes": "Hindi input — same clinical picture as DEMO-002. Tests multilingual pipeline."
+  },
+  {
+    "case_id": "DEMO-006",
+    "label": "Tamil — Stomach pain + vomiting",
+    "input": "எனக்கு வயிற்று வலியும் வாந்தியும் உள்ளது. இரண்டு நாட்களாக உள்ளது.",
+    "language": "ta",
+    "location_district": "Dharmapuri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "MODERATE",
+    "expected_emergency": false,
+    "notes": "Tamil input: stomach pain and vomiting for 2 days."
+  },
+  {
+    "case_id": "DEMO-007",
+    "label": "Emergency — Snake bite",
+    "input": "A snake bit my son on the leg 30 minutes ago. His leg is swelling.",
+    "language": "en",
+    "location_district": "Dharmapuri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "EMERGENCY",
+    "expected_emergency": true,
+    "notes": "Snake bite with swelling — emergency escalation required."
+  },
+  {
+    "case_id": "DEMO-008",
+    "label": "Moderate — Maternal danger sign",
+    "input": "I am 7 months pregnant and I have been having severe headache and swelling in my legs for 2 days.",
+    "language": "en",
+    "location_district": "Krishnagiri",
+    "location_state": "Tamil Nadu",
+    "expected_triage": "URGENT",
+    "expected_emergency": false,
+    "notes": "Pre-eclampsia warning signs — headache + oedema in 3rd trimester. Conservative triage to URGENT."
+  }
+]
