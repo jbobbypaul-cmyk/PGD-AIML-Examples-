@@ -8,6 +8,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
+# Install PyTorch CPU-only wheel FIRST (~200 MB) before the rest of requirements.
+# Without this, pip resolves torch from PyPI and downloads the CUDA variant (~2 GB),
+# which causes 2+ hour builds and OOM on Render Starter (512 MB RAM).
+RUN pip install --no-cache-dir \
+    torch==2.3.1+cpu \
+    --extra-index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
